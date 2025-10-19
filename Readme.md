@@ -14,7 +14,7 @@ Structured verification aims to separate the **Device Under Test (DUT)** from th
 
 The architecture organizes the verification components into a **Testbench Hierarchy**, as shown in the diagram:
 
-![UVM Testbench Architecture Diagram](Block_Diagram.png)
+![UVM Testbench Architecture Diagram](https://github.com/UVMUFSC/Tutorials/blob/main/assets/Block_Diagram.png)
 
 The architecture is typically organized into a top-level **test** module, which manages the **environment (env)**, the **agent**, and the connection to the **interface** and the **DUT**.
 
