@@ -1,0 +1,6 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1761252058" />
+    <testcase name="full_adder_random_test" classname="uvm_full_adder" file="/facul/extensao/full_adder/uvm_full_adder.py" lineno="102" time="0.01684737205505371" sim_time_ns="1046.0" ratio_time="62086.834467826164" />
+  </testsuite>
+</testsuites>

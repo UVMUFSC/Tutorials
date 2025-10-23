@@ -1,0 +1,68 @@
+     0.00ns INFO     cocotb.regression                  running uvm_adder_4bits.adder_4bits_random_test (1/1)
+     0.00ns INFO     cocotb.adder_4bits                 Iniciando teste de casos de canto...
+VCD info: dumping is suppressed.
+    19.00ns INFO     cocotb.adder_4bits                 [SCOREBOARD PASS] Entradas (0, 0) -> sum=0, carry=0
+    38.00ns INFO     cocotb.adder_4bits                 [SCOREBOARD PASS] Entradas (15, 0) -> sum=15, carry=0
+    57.00ns INFO     cocotb.adder_4bits                 [SCOREBOARD PASS] Entradas (8, 7) -> sum=15, carry=0
+    76.00ns INFO     cocotb.adder_4bits                 [SCOREBOARD PASS] Entradas (8, 8) -> sum=0, carry=1
+    95.00ns INFO     cocotb.adder_4bits                 [SCOREBOARD PASS] Entradas (15, 15) -> sum=14, carry=1
+    95.00ns INFO     cocotb.adder_4bits                 Iniciando 50 testes aleatórios...
+   114.00ns INFO     cocotb.adder_4bits                 [SCOREBOARD PASS] Entradas (2, 7) -> sum=9, carry=0
+   133.00ns INFO     cocotb.adder_4bits                 [SCOREBOARD PASS] Entradas (11, 3) -> sum=14, carry=0
+   152.00ns INFO     cocotb.adder_4bits                 [SCOREBOARD PASS] Entradas (14, 8) -> sum=6, carry=1
+   171.00ns INFO     cocotb.adder_4bits                 [SCOREBOARD PASS] Entradas (8, 1) -> sum=9, carry=0
+   190.00ns INFO     cocotb.adder_4bits                 [SCOREBOARD PASS] Entradas (7, 7) -> sum=14, carry=0
+   209.00ns INFO     cocotb.adder_4bits                 [SCOREBOARD PASS] Entradas (2, 8) -> sum=10, carry=0
+   228.00ns INFO     cocotb.adder_4bits                 [SCOREBOARD PASS] Entradas (1, 2) -> sum=3, carry=0
+   247.00ns INFO     cocotb.adder_4bits                 [SCOREBOARD PASS] Entradas (0, 11) -> sum=11, carry=0
+   266.00ns INFO     cocotb.adder_4bits                 [SCOREBOARD PASS] Entradas (13, 11) -> sum=8, carry=1
+   285.00ns INFO     cocotb.adder_4bits                 [SCOREBOARD PASS] Entradas (11, 8) -> sum=3, carry=1
+   304.00ns INFO     cocotb.adder_4bits                 [SCOREBOARD PASS] Entradas (8, 3) -> sum=11, carry=0
+   323.00ns INFO     cocotb.adder_4bits                 [SCOREBOARD PASS] Entradas (5, 13) -> sum=2, carry=1
+   342.00ns INFO     cocotb.adder_4bits                 [SCOREBOARD PASS] Entradas (12, 7) -> sum=3, carry=1
+   361.00ns INFO     cocotb.adder_4bits                 [SCOREBOARD PASS] Entradas (4, 1) -> sum=5, carry=0
+   380.00ns INFO     cocotb.adder_4bits                 [SCOREBOARD PASS] Entradas (2, 6) -> sum=8, carry=0
+   399.00ns INFO     cocotb.adder_4bits                 [SCOREBOARD PASS] Entradas (4, 12) -> sum=0, carry=1
+   418.00ns INFO     cocotb.adder_4bits                 [SCOREBOARD PASS] Entradas (9, 12) -> sum=5, carry=1
+   437.00ns INFO     cocotb.adder_4bits                 [SCOREBOARD PASS] Entradas (13, 9) -> sum=6, carry=1
+   456.00ns INFO     cocotb.adder_4bits                 [SCOREBOARD PASS] Entradas (6, 3) -> sum=9, carry=0
+   475.00ns INFO     cocotb.adder_4bits                 [SCOREBOARD PASS] Entradas (10, 15) -> sum=9, carry=1
+   494.00ns INFO     cocotb.adder_4bits                 [SCOREBOARD PASS] Entradas (11, 15) -> sum=10, carry=1
+   513.00ns INFO     cocotb.adder_4bits                 [SCOREBOARD PASS] Entradas (5, 2) -> sum=7, carry=0
+   532.00ns INFO     cocotb.adder_4bits                 [SCOREBOARD PASS] Entradas (7, 2) -> sum=9, carry=0
+   551.00ns INFO     cocotb.adder_4bits                 [SCOREBOARD PASS] Entradas (15, 11) -> sum=10, carry=1
+   570.00ns INFO     cocotb.adder_4bits                 [SCOREBOARD PASS] Entradas (9, 9) -> sum=2, carry=1
+   589.00ns INFO     cocotb.adder_4bits                 [SCOREBOARD PASS] Entradas (1, 15) -> sum=0, carry=1
+   608.00ns INFO     cocotb.adder_4bits                 [SCOREBOARD PASS] Entradas (14, 11) -> sum=9, carry=1
+   627.00ns INFO     cocotb.adder_4bits                 [SCOREBOARD PASS] Entradas (7, 5) -> sum=12, carry=0
+   646.00ns INFO     cocotb.adder_4bits                 [SCOREBOARD PASS] Entradas (8, 3) -> sum=11, carry=0
+   665.00ns INFO     cocotb.adder_4bits                 [SCOREBOARD PASS] Entradas (5, 2) -> sum=7, carry=0
+   684.00ns INFO     cocotb.adder_4bits                 [SCOREBOARD PASS] Entradas (7, 4) -> sum=11, carry=0
+   703.00ns INFO     cocotb.adder_4bits                 [SCOREBOARD PASS] Entradas (13, 6) -> sum=3, carry=1
+   722.00ns INFO     cocotb.adder_4bits                 [SCOREBOARD PASS] Entradas (11, 11) -> sum=6, carry=1
+   741.00ns INFO     cocotb.adder_4bits                 [SCOREBOARD PASS] Entradas (3, 14) -> sum=1, carry=1
+   760.00ns INFO     cocotb.adder_4bits                 [SCOREBOARD PASS] Entradas (6, 8) -> sum=14, carry=0
+   779.00ns INFO     cocotb.adder_4bits                 [SCOREBOARD PASS] Entradas (13, 3) -> sum=0, carry=1
+   798.00ns INFO     cocotb.adder_4bits                 [SCOREBOARD PASS] Entradas (2, 12) -> sum=14, carry=0
+   817.00ns INFO     cocotb.adder_4bits                 [SCOREBOARD PASS] Entradas (6, 11) -> sum=1, carry=1
+   836.00ns INFO     cocotb.adder_4bits                 [SCOREBOARD PASS] Entradas (2, 7) -> sum=9, carry=0
+   855.00ns INFO     cocotb.adder_4bits                 [SCOREBOARD PASS] Entradas (11, 9) -> sum=4, carry=1
+   874.00ns INFO     cocotb.adder_4bits                 [SCOREBOARD PASS] Entradas (0, 4) -> sum=4, carry=0
+   893.00ns INFO     cocotb.adder_4bits                 [SCOREBOARD PASS] Entradas (14, 9) -> sum=7, carry=1
+   912.00ns INFO     cocotb.adder_4bits                 [SCOREBOARD PASS] Entradas (15, 5) -> sum=4, carry=1
+   931.00ns INFO     cocotb.adder_4bits                 [SCOREBOARD PASS] Entradas (4, 0) -> sum=4, carry=0
+   950.00ns INFO     cocotb.adder_4bits                 [SCOREBOARD PASS] Entradas (6, 6) -> sum=12, carry=0
+   969.00ns INFO     cocotb.adder_4bits                 [SCOREBOARD PASS] Entradas (9, 2) -> sum=11, carry=0
+   988.00ns INFO     cocotb.adder_4bits                 [SCOREBOARD PASS] Entradas (9, 15) -> sum=8, carry=1
+  1007.00ns INFO     cocotb.adder_4bits                 [SCOREBOARD PASS] Entradas (2, 5) -> sum=7, carry=0
+  1026.00ns INFO     cocotb.adder_4bits                 [SCOREBOARD PASS] Entradas (5, 7) -> sum=12, carry=0
+  1045.00ns INFO     cocotb.adder_4bits                 [SCOREBOARD PASS] Entradas (8, 1) -> sum=9, carry=0
+  1065.00ns INFO     cocotb.adder_4bits                 Teste do adder_4bits concluído com sucesso!
+  1065.00ns INFO     cocotb.regression                  uvm_adder_4bits.adder_4bits_random_test passed
+  1065.00ns INFO     cocotb.regression                  *************************************************************************************************
+                                                        ** TEST                                     STATUS  SIM TIME (ns)  REAL TIME (s)  RATIO (ns/s) **
+                                                        *************************************************************************************************
+                                                        ** uvm_adder_4bits.adder_4bits_random_test   PASS        1065.00           0.01      95676.27  **
+                                                        *************************************************************************************************
+                                                        ** TESTS=1 PASS=1 FAIL=0 SKIP=0                          1065.00           0.01      85920.75  **
+                                                        *************************************************************************************************

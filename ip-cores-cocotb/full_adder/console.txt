@@ -1,0 +1,67 @@
+                                                            Testa o full_adder usando uma combinação de casos de canto direcionados
+     0.00ns INFO     cocotb.full_adder                  Iniciando teste de casos de canto...
+VCD info: dumping is suppressed.
+[SCOREBOARD PASS] Entradas (Logic('0'), Logic('0'), Logic('0')) -> sum=0, carry=0
+[SCOREBOARD PASS] Entradas (Logic('0'), Logic('0'), Logic('1')) -> sum=1, carry=0
+[SCOREBOARD PASS] Entradas (Logic('1'), Logic('1'), Logic('0')) -> sum=0, carry=1
+[SCOREBOARD PASS] Entradas (Logic('1'), Logic('1'), Logic('1')) -> sum=1, carry=1
+    76.00ns INFO     cocotb.full_adder                  Iniciando 50 testes aleatórios...
+[SCOREBOARD PASS] Entradas (Logic('1'), Logic('0'), Logic('1')) -> sum=0, carry=1
+[SCOREBOARD PASS] Entradas (Logic('1'), Logic('0'), Logic('1')) -> sum=0, carry=1
+[SCOREBOARD PASS] Entradas (Logic('1'), Logic('1'), Logic('1')) -> sum=1, carry=1
+[SCOREBOARD PASS] Entradas (Logic('0'), Logic('1'), Logic('0')) -> sum=1, carry=0
+[SCOREBOARD PASS] Entradas (Logic('1'), Logic('0'), Logic('1')) -> sum=0, carry=1
+[SCOREBOARD PASS] Entradas (Logic('0'), Logic('0'), Logic('0')) -> sum=0, carry=0
+[SCOREBOARD PASS] Entradas (Logic('0'), Logic('1'), Logic('1')) -> sum=0, carry=1
+[SCOREBOARD PASS] Entradas (Logic('0'), Logic('1'), Logic('0')) -> sum=1, carry=0
+[SCOREBOARD PASS] Entradas (Logic('0'), Logic('0'), Logic('1')) -> sum=1, carry=0
+[SCOREBOARD PASS] Entradas (Logic('1'), Logic('0'), Logic('0')) -> sum=1, carry=0
+[SCOREBOARD PASS] Entradas (Logic('0'), Logic('1'), Logic('1')) -> sum=0, carry=1
+[SCOREBOARD PASS] Entradas (Logic('1'), Logic('1'), Logic('1')) -> sum=1, carry=1
+[SCOREBOARD PASS] Entradas (Logic('1'), Logic('1'), Logic('1')) -> sum=1, carry=1
+[SCOREBOARD PASS] Entradas (Logic('1'), Logic('0'), Logic('0')) -> sum=1, carry=0
+[SCOREBOARD PASS] Entradas (Logic('1'), Logic('1'), Logic('1')) -> sum=1, carry=1
+[SCOREBOARD PASS] Entradas (Logic('1'), Logic('1'), Logic('0')) -> sum=0, carry=1
+[SCOREBOARD PASS] Entradas (Logic('1'), Logic('1'), Logic('0')) -> sum=0, carry=1
+[SCOREBOARD PASS] Entradas (Logic('1'), Logic('1'), Logic('0')) -> sum=0, carry=1
+[SCOREBOARD PASS] Entradas (Logic('1'), Logic('1'), Logic('0')) -> sum=0, carry=1
+[SCOREBOARD PASS] Entradas (Logic('0'), Logic('0'), Logic('0')) -> sum=0, carry=0
+[SCOREBOARD PASS] Entradas (Logic('0'), Logic('1'), Logic('0')) -> sum=1, carry=0
+[SCOREBOARD PASS] Entradas (Logic('0'), Logic('0'), Logic('0')) -> sum=0, carry=0
+[SCOREBOARD PASS] Entradas (Logic('1'), Logic('1'), Logic('1')) -> sum=1, carry=1
+[SCOREBOARD PASS] Entradas (Logic('0'), Logic('0'), Logic('0')) -> sum=0, carry=0
+[SCOREBOARD PASS] Entradas (Logic('1'), Logic('1'), Logic('1')) -> sum=1, carry=1
+[SCOREBOARD PASS] Entradas (Logic('0'), Logic('1'), Logic('0')) -> sum=1, carry=0
+[SCOREBOARD PASS] Entradas (Logic('0'), Logic('0'), Logic('1')) -> sum=1, carry=0
+[SCOREBOARD PASS] Entradas (Logic('0'), Logic('1'), Logic('0')) -> sum=1, carry=0
+[SCOREBOARD PASS] Entradas (Logic('0'), Logic('0'), Logic('1')) -> sum=1, carry=0
+[SCOREBOARD PASS] Entradas (Logic('0'), Logic('1'), Logic('0')) -> sum=1, carry=0
+[SCOREBOARD PASS] Entradas (Logic('0'), Logic('0'), Logic('1')) -> sum=1, carry=0
+[SCOREBOARD PASS] Entradas (Logic('1'), Logic('0'), Logic('0')) -> sum=1, carry=0
+[SCOREBOARD PASS] Entradas (Logic('1'), Logic('1'), Logic('0')) -> sum=0, carry=1
+[SCOREBOARD PASS] Entradas (Logic('0'), Logic('0'), Logic('0')) -> sum=0, carry=0
+[SCOREBOARD PASS] Entradas (Logic('0'), Logic('1'), Logic('1')) -> sum=0, carry=1
+[SCOREBOARD PASS] Entradas (Logic('1'), Logic('1'), Logic('0')) -> sum=0, carry=1
+[SCOREBOARD PASS] Entradas (Logic('0'), Logic('1'), Logic('1')) -> sum=0, carry=1
+[SCOREBOARD PASS] Entradas (Logic('0'), Logic('1'), Logic('1')) -> sum=0, carry=1
+[SCOREBOARD PASS] Entradas (Logic('0'), Logic('0'), Logic('0')) -> sum=0, carry=0
+[SCOREBOARD PASS] Entradas (Logic('0'), Logic('0'), Logic('1')) -> sum=1, carry=0
+[SCOREBOARD PASS] Entradas (Logic('1'), Logic('1'), Logic('0')) -> sum=0, carry=1
+[SCOREBOARD PASS] Entradas (Logic('0'), Logic('0'), Logic('1')) -> sum=1, carry=0
+[SCOREBOARD PASS] Entradas (Logic('0'), Logic('1'), Logic('1')) -> sum=0, carry=1
+[SCOREBOARD PASS] Entradas (Logic('0'), Logic('0'), Logic('0')) -> sum=0, carry=0
+[SCOREBOARD PASS] Entradas (Logic('1'), Logic('0'), Logic('1')) -> sum=0, carry=1
+[SCOREBOARD PASS] Entradas (Logic('0'), Logic('1'), Logic('0')) -> sum=1, carry=0
+[SCOREBOARD PASS] Entradas (Logic('1'), Logic('1'), Logic('0')) -> sum=0, carry=1
+[SCOREBOARD PASS] Entradas (Logic('0'), Logic('0'), Logic('0')) -> sum=0, carry=0
+[SCOREBOARD PASS] Entradas (Logic('1'), Logic('0'), Logic('0')) -> sum=1, carry=0
+[SCOREBOARD PASS] Entradas (Logic('1'), Logic('1'), Logic('0')) -> sum=0, carry=1
+  1046.00ns INFO     cocotb.full_adder                  Teste aleatório concluído com sucesso!
+  1046.00ns INFO     cocotb.regression                  uvm_full_adder.full_adder_random_test passed
+  1046.00ns INFO     cocotb.regression                  ***********************************************************************************************
+                                                        ** TEST                                   STATUS  SIM TIME (ns)  REAL TIME (s)  RATIO (ns/s) **
+                                                        ***********************************************************************************************
+                                                        ** uvm_full_adder.full_adder_random_test   PASS        1046.00           0.02      62086.83  **
+                                                        ***********************************************************************************************
+                                                        ** TESTS=1 PASS=1 FAIL=0 SKIP=0                        1046.00           0.02      54943.54  **
+                                                        ***********************************************************************************************

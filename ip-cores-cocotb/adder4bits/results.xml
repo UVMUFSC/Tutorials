@@ -1,0 +1,6 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1761252005" />
+    <testcase name="adder_4bits_random_test" classname="uvm_adder_4bits" file="/facul/extensao/adder4bits/uvm_adder_4bits.py" lineno="95" time="0.01113128662109375" sim_time_ns="1065.0" ratio_time="95676.27141877999" />
+  </testsuite>
+</testsuites>

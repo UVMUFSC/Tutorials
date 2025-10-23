@@ -1,0 +1,64 @@
+                                                      Testa o mux4x1 com verificação aleatória.
+     0.00ns INFO     cocotb.mux4x1                      Iniciando 50 testes aleatórios...
+VCD info: dumping is suppressed.
+Invalid sel input
+Invalid sel input
+    19.00ns INFO     cocotb.mux4x1                      [SCOREBOARD PASS] Entradas x=(1,1,1,1), sel=0 -> y=1
+    38.00ns INFO     cocotb.mux4x1                      [SCOREBOARD PASS] Entradas x=(1,0,1,0), sel=2 -> y=1
+    57.00ns INFO     cocotb.mux4x1                      [SCOREBOARD PASS] Entradas x=(1,0,1,1), sel=3 -> y=1
+    76.00ns INFO     cocotb.mux4x1                      [SCOREBOARD PASS] Entradas x=(0,1,1,0), sel=3 -> y=0
+    95.00ns INFO     cocotb.mux4x1                      [SCOREBOARD PASS] Entradas x=(1,0,1,1), sel=0 -> y=1
+   114.00ns INFO     cocotb.mux4x1                      [SCOREBOARD PASS] Entradas x=(1,0,0,1), sel=2 -> y=0
+   133.00ns INFO     cocotb.mux4x1                      [SCOREBOARD PASS] Entradas x=(0,1,1,0), sel=0 -> y=0
+   152.00ns INFO     cocotb.mux4x1                      [SCOREBOARD PASS] Entradas x=(0,1,0,0), sel=0 -> y=0
+   171.00ns INFO     cocotb.mux4x1                      [SCOREBOARD PASS] Entradas x=(0,0,0,1), sel=3 -> y=1
+   190.00ns INFO     cocotb.mux4x1                      [SCOREBOARD PASS] Entradas x=(0,1,1,0), sel=3 -> y=0
+   209.00ns INFO     cocotb.mux4x1                      [SCOREBOARD PASS] Entradas x=(1,0,0,1), sel=1 -> y=0
+   228.00ns INFO     cocotb.mux4x1                      [SCOREBOARD PASS] Entradas x=(0,1,0,0), sel=2 -> y=0
+   247.00ns INFO     cocotb.mux4x1                      [SCOREBOARD PASS] Entradas x=(0,1,1,0), sel=2 -> y=1
+   266.00ns INFO     cocotb.mux4x1                      [SCOREBOARD PASS] Entradas x=(0,0,0,0), sel=2 -> y=0
+   285.00ns INFO     cocotb.mux4x1                      [SCOREBOARD PASS] Entradas x=(1,0,0,0), sel=1 -> y=0
+   304.00ns INFO     cocotb.mux4x1                      [SCOREBOARD PASS] Entradas x=(1,0,0,0), sel=2 -> y=0
+   323.00ns INFO     cocotb.mux4x1                      [SCOREBOARD PASS] Entradas x=(1,1,1,1), sel=0 -> y=1
+   342.00ns INFO     cocotb.mux4x1                      [SCOREBOARD PASS] Entradas x=(0,1,0,0), sel=3 -> y=0
+   361.00ns INFO     cocotb.mux4x1                      [SCOREBOARD PASS] Entradas x=(1,1,0,0), sel=1 -> y=1
+   380.00ns INFO     cocotb.mux4x1                      [SCOREBOARD PASS] Entradas x=(0,0,0,0), sel=2 -> y=0
+   399.00ns INFO     cocotb.mux4x1                      [SCOREBOARD PASS] Entradas x=(0,1,0,1), sel=0 -> y=0
+   418.00ns INFO     cocotb.mux4x1                      [SCOREBOARD PASS] Entradas x=(1,0,1,0), sel=0 -> y=1
+   437.00ns INFO     cocotb.mux4x1                      [SCOREBOARD PASS] Entradas x=(0,0,0,0), sel=1 -> y=0
+   456.00ns INFO     cocotb.mux4x1                      [SCOREBOARD PASS] Entradas x=(1,1,1,1), sel=2 -> y=1
+   475.00ns INFO     cocotb.mux4x1                      [SCOREBOARD PASS] Entradas x=(1,0,1,1), sel=0 -> y=1
+   494.00ns INFO     cocotb.mux4x1                      [SCOREBOARD PASS] Entradas x=(1,0,0,1), sel=0 -> y=1
+   513.00ns INFO     cocotb.mux4x1                      [SCOREBOARD PASS] Entradas x=(1,0,1,0), sel=2 -> y=1
+   532.00ns INFO     cocotb.mux4x1                      [SCOREBOARD PASS] Entradas x=(1,0,0,1), sel=1 -> y=0
+   551.00ns INFO     cocotb.mux4x1                      [SCOREBOARD PASS] Entradas x=(0,1,1,1), sel=3 -> y=1
+   570.00ns INFO     cocotb.mux4x1                      [SCOREBOARD PASS] Entradas x=(1,1,0,0), sel=2 -> y=0
+   589.00ns INFO     cocotb.mux4x1                      [SCOREBOARD PASS] Entradas x=(1,0,0,0), sel=0 -> y=1
+   608.00ns INFO     cocotb.mux4x1                      [SCOREBOARD PASS] Entradas x=(1,1,0,0), sel=1 -> y=1
+   627.00ns INFO     cocotb.mux4x1                      [SCOREBOARD PASS] Entradas x=(0,1,1,1), sel=1 -> y=1
+   646.00ns INFO     cocotb.mux4x1                      [SCOREBOARD PASS] Entradas x=(0,1,1,0), sel=3 -> y=0
+   665.00ns INFO     cocotb.mux4x1                      [SCOREBOARD PASS] Entradas x=(1,0,1,1), sel=3 -> y=1
+   684.00ns INFO     cocotb.mux4x1                      [SCOREBOARD PASS] Entradas x=(1,1,1,1), sel=0 -> y=1
+   703.00ns INFO     cocotb.mux4x1                      [SCOREBOARD PASS] Entradas x=(0,0,1,1), sel=1 -> y=0
+   722.00ns INFO     cocotb.mux4x1                      [SCOREBOARD PASS] Entradas x=(1,0,1,1), sel=3 -> y=1
+   741.00ns INFO     cocotb.mux4x1                      [SCOREBOARD PASS] Entradas x=(1,0,0,0), sel=2 -> y=0
+   760.00ns INFO     cocotb.mux4x1                      [SCOREBOARD PASS] Entradas x=(0,0,1,1), sel=3 -> y=1
+   779.00ns INFO     cocotb.mux4x1                      [SCOREBOARD PASS] Entradas x=(0,0,1,1), sel=1 -> y=0
+   798.00ns INFO     cocotb.mux4x1                      [SCOREBOARD PASS] Entradas x=(1,0,0,1), sel=3 -> y=1
+   817.00ns INFO     cocotb.mux4x1                      [SCOREBOARD PASS] Entradas x=(1,0,1,1), sel=0 -> y=1
+   836.00ns INFO     cocotb.mux4x1                      [SCOREBOARD PASS] Entradas x=(1,0,1,1), sel=1 -> y=0
+   855.00ns INFO     cocotb.mux4x1                      [SCOREBOARD PASS] Entradas x=(0,1,0,1), sel=3 -> y=1
+   874.00ns INFO     cocotb.mux4x1                      [SCOREBOARD PASS] Entradas x=(0,1,0,1), sel=1 -> y=1
+   893.00ns INFO     cocotb.mux4x1                      [SCOREBOARD PASS] Entradas x=(0,1,1,1), sel=0 -> y=0
+   912.00ns INFO     cocotb.mux4x1                      [SCOREBOARD PASS] Entradas x=(0,1,1,0), sel=3 -> y=0
+   931.00ns INFO     cocotb.mux4x1                      [SCOREBOARD PASS] Entradas x=(1,0,0,0), sel=0 -> y=1
+   950.00ns INFO     cocotb.mux4x1                      [SCOREBOARD PASS] Entradas x=(1,1,0,0), sel=1 -> y=1
+   970.00ns INFO     cocotb.mux4x1                      Teste do mux4x1 concluído com sucesso!
+   970.00ns INFO     cocotb.regression                  uvm_mux.mux_random_test passed
+   970.00ns INFO     cocotb.regression                  **************************************************************************************
+                                                        ** TEST                          STATUS  SIM TIME (ns)  REAL TIME (s)  RATIO (ns/s) **
+                                                        **************************************************************************************
+                                                        ** uvm_mux.mux_random_test        PASS         970.00           0.01     102713.33  **
+                                                        **************************************************************************************
+                                                        ** TESTS=1 PASS=1 FAIL=0 SKIP=0                970.00           0.01      92887.55  **
+                                                        **************************************************************************************

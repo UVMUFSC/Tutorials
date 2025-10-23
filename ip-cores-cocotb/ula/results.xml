@@ -1,0 +1,6 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1761252874" />
+    <testcase name="alu_random_test" classname="uvm_alu" file="/facul/extensao/ula/uvm_alu.py" lineno="155" time="0.015202045440673828" sim_time_ns="1274.0" ratio_time="83804.51202910824" />
+  </testsuite>
+</testsuites>

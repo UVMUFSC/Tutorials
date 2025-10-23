@@ -1,0 +1,79 @@
+                                                  Testa a ULA com casos direcionados e verificação aleatória.
+     0.00ns INFO     cocotb.alu                         Iniciando teste direcionado para cada opcode...
+VCD info: dumping is suppressed.
+    19.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=170, B=85, opcode=INC -> alu=171, carry=0
+    38.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=170, B=85, opcode=DEC -> alu=169, carry=0
+    57.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=170, B=85, opcode=ADD -> alu=255, carry=0
+    76.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=170, B=85, opcode=ADD_C -> alu=0, carry=0
+    95.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=170, B=85, opcode=SUB_B -> alu=85, carry=0
+   114.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=170, B=85, opcode=SUB -> alu=84, carry=0
+   133.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=170, B=85, opcode=SHIFT_R -> alu=0, carry=0
+   152.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=170, B=85, opcode=SHIFT_L -> alu=0, carry=0
+   171.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=170, B=85, opcode=AND_OP -> alu=0, carry=0
+   190.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=170, B=85, opcode=NAND -> alu=255, carry=0
+   209.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=170, B=85, opcode=OR -> alu=255, carry=0
+   228.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=170, B=85, opcode=NOR -> alu=0, carry=0
+   247.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=170, B=85, opcode=XOR -> alu=255, carry=0
+   266.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=170, B=85, opcode=XNOR -> alu=0, carry=0
+   285.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=170, B=85, opcode=NOT -> alu=0, carry=0
+   304.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=170, B=85, opcode=TRF_A -> alu=170, carry=0
+   304.00ns INFO     cocotb.alu                         Iniciando 50 testes aleatórios...
+   323.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=108, B=157, opcode=XNOR -> alu=14, carry=1
+   342.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=134, B=255, opcode=SUB_B -> alu=135, carry=1
+   361.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=193, B=73, opcode=XOR -> alu=136, carry=1
+   380.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=161, B=120, opcode=AND_OP -> alu=32, carry=1
+   399.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=16, B=202, opcode=SHIFT_R -> alu=0, carry=0
+   418.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=171, B=237, opcode=NAND -> alu=86, carry=1
+   437.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=176, B=118, opcode=OR -> alu=246, carry=1
+   456.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=26, B=133, opcode=ADD -> alu=159, carry=0
+   475.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=218, B=85, opcode=SUB -> alu=132, carry=1
+   494.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=196, B=135, opcode=NAND -> alu=123, carry=1
+   513.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=157, B=75, opcode=OR -> alu=223, carry=0
+   532.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=35, B=102, opcode=ADD -> alu=137, carry=0
+   551.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=162, B=69, opcode=ADD -> alu=231, carry=0
+   570.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=232, B=118, opcode=NAND -> alu=159, carry=1
+   589.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=131, B=46, opcode=OR -> alu=175, carry=0
+   608.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=184, B=7, opcode=XOR -> alu=191, carry=0
+   627.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=13, B=64, opcode=SHIFT_L -> alu=0, carry=0
+   646.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=228, B=114, opcode=SHIFT_L -> alu=0, carry=1
+   665.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=223, B=60, opcode=ADD -> alu=27, carry=1
+   684.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=63, B=154, opcode=SUB -> alu=164, carry=0
+   703.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=115, B=144, opcode=ADD_C -> alu=4, carry=1
+   722.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=107, B=151, opcode=TRF_A -> alu=107, carry=1
+   741.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=1, B=33, opcode=SHIFT_R -> alu=0, carry=0
+   760.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=19, B=244, opcode=AND_OP -> alu=16, carry=1
+   779.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=117, B=198, opcode=ADD -> alu=59, carry=1
+   798.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=197, B=227, opcode=AND_OP -> alu=193, carry=1
+   817.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=218, B=29, opcode=SHIFT_R -> alu=0, carry=0
+   836.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=94, B=187, opcode=DEC -> alu=93, carry=1
+   855.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=184, B=185, opcode=SUB_B -> alu=255, carry=1
+   874.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=105, B=124, opcode=XNOR -> alu=234, carry=0
+   893.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=187, B=30, opcode=SHIFT_L -> alu=0, carry=0
+   912.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=30, B=30, opcode=NOR -> alu=225, carry=0
+   931.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=56, B=197, opcode=ADD -> alu=253, carry=0
+   950.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=172, B=146, opcode=ADD -> alu=62, carry=1
+   969.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=234, B=138, opcode=SUB_B -> alu=96, carry=1
+   988.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=1, B=53, opcode=TRF_A -> alu=1, carry=0
+  1007.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=185, B=220, opcode=NOT -> alu=0, carry=1
+  1026.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=175, B=131, opcode=NOR -> alu=80, carry=1
+  1045.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=14, B=71, opcode=OR -> alu=79, carry=0
+  1064.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=188, B=1, opcode=TRF_A -> alu=188, carry=0
+  1083.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=56, B=85, opcode=INC -> alu=57, carry=0
+  1102.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=160, B=180, opcode=INC -> alu=161, carry=1
+  1121.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=221, B=255, opcode=SHIFT_L -> alu=0, carry=1
+  1140.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=62, B=37, opcode=XOR -> alu=27, carry=0
+  1159.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=129, B=182, opcode=TRF_A -> alu=129, carry=1
+  1178.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=32, B=174, opcode=INC -> alu=33, carry=0
+  1197.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=66, B=186, opcode=INC -> alu=67, carry=0
+  1216.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=235, B=205, opcode=SHIFT_R -> alu=0, carry=1
+  1235.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=230, B=186, opcode=OR -> alu=254, carry=1
+  1254.00ns INFO     cocotb.alu                         [SCOREBOARD PASS] A=7, B=126, opcode=SUB_B -> alu=137, carry=0
+  1274.00ns INFO     cocotb.alu                         Teste da ULA concluído com sucesso!
+  1274.00ns INFO     cocotb.regression                  uvm_alu.alu_random_test passed
+  1274.00ns INFO     cocotb.regression                  **************************************************************************************
+                                                        ** TEST                          STATUS  SIM TIME (ns)  REAL TIME (s)  RATIO (ns/s) **
+                                                        **************************************************************************************
+                                                        ** uvm_alu.alu_random_test        PASS        1274.00           0.02      83804.51  **
+                                                        **************************************************************************************
+                                                        ** TESTS=1 PASS=1 FAIL=0 SKIP=0               1274.00           0.02      78129.97  **
+                                                        **************************************************************************************
