@@ -1,0 +1,6 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1763859228" />
+    <testcase name="MyTest" classname="MyTest" file="/home/edu17z/Documents/Projeto_UVM/PyUVM/HalfAdder/cocotb_env_313/lib64/python3.13/site-packages/pyuvm/extension_classes.py" lineno="6" time="0.02085089683532715" sim_time_ns="2.034" ratio_time="97.54976085987079" />
+  </testsuite>
+</testsuites>
