@@ -37,12 +37,12 @@ source venv_cocotb/bin/activate
 
 # Install PyUVM and the Verification Stimulus and Coverage (vsc) library
 ```bash
-pip install pyuvm vsc
+pip install pyuvm pyvsc
 ```
 
 **Key Packages:**
 * **`pyuvm`**: Provides the UVM base classes and phasing system in Python.
-* **`vsc`** (Verification Stimulus and Coverage): Enables functional coverage modeling, constraint randomization, and coverage collection.
+* **`pyvsc`** (Verification Stimulus and Coverage): Enables functional coverage modeling, constraint randomization, and coverage collection.
 
 ## 3. Configure the Makefile for PyUVM Tests
 
