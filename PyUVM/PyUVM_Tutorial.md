@@ -20,7 +20,7 @@ Before you begin, it is important to understand the **key differences in methodo
 Ensure you have completed the **[cocotb Setup Guide](CocoTb_Tutorial.md)** first, as PyUVM builds upon the cocotb infrastructure. You should have:
 
 * **cocotb environment** fully configured (Verilator, GTKWave, Python virtual environment)
-* **Python 3.8+** with cocotb installed and working
+* **Python 3.8 to 3.14** with cocotb installed and working (to the current date of this document, the pyuvm library works only until 3.14 python version)
 * **Verilator 5.0+** (or other cocotb-supported simulator)
 * **GNU Make** and **C/C++ Compiler**
 

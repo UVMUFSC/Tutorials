@@ -1,6 +1,6 @@
 # PyUVM Verification Tutorials Collection
 
-This directory contains PyUVM-based verification tutorials that build on top of a Cocotb environment. Each tutorial demonstrates how to verify a specific Verilog/SystemVerilog module using the PyUVM phasing and architecture (sequencer → driver → monitor → scoreboard) and coverage driven testing using `vsc`.
+This directory contains PyUVM-based verification tutorials that build on top of a Cocotb environment. Each tutorial demonstrates how to verify a specific Verilog/SystemVerilog module using the PyUVM phasing and architecture (sequencer → driver → monitor → scoreboard) and coverage driven testing using `pyvsc`. 
 
 ## 📁 Project Structure
 
@@ -24,7 +24,7 @@ Each tutorial follows a consistent PyUVM style and typically includes:
 - PyUVM testbench components: `MyTest`, `MyEnv`, `MyAgent`, `MyDriver`, `MySequencer`, `MyMonitor`, `MyScoreboard`, and `MyCoverage`
 - Golden model implementation (reference model in Python)
 - Sequence and transaction (`Pkt`) classes implementing randomization
-- Coverage models using `vsc` (covergroups + coverpoints + crosses)
+- Coverage models using `pyvsc` (covergroups + coverpoints + crosses)
 - Wrapper/BFM to interact with the DUT from Python
 - `Makefile` to run the simulation via cocotb
 
@@ -33,7 +33,7 @@ Each tutorial follows a consistent PyUVM style and typically includes:
 - **Coverage-driven testing**: Sequences commonly run until a coverage goal is met (e.g., 100%), rather than a fixed set of vectors.
 - **UVM-style phasing and components**: Tests use `pyuvm` classes, `ConfigDB` for configuration handles (BFM, coverage objects), and the objection mechanism for test termination control.
 - **Decoupled checking**: The scoreboard consumes transactions from monitors and checks results asynchronously using a Golden Model.
-- **Functional coverage focus**: The `vsc` library is used to define covergroups and evaluate coverage; tests assert coverage success in `report_phase()`.
+- **Functional coverage focus**: The `pyvsc` library is used to define covergroups and evaluate coverage; tests assert coverage success in `report_phase()`.
 
 ## 🏗️ UVM Architecture
 
@@ -73,7 +73,7 @@ Each PyUVM tutorial implements a UVM-style architecture. The diagram below uses 
 - Python 3.8+
 - cocotb
 - pyuvm (`pip install pyuvm`)
-- vsc (`pip install vsc`) for coverage
+- pyvsc (`pip install pyvsc`) for coverage
 - Verilator (recommended) or another cocotb-supported simulator
 - GNU Make
 
@@ -85,10 +85,10 @@ Each PyUVM tutorial implements a UVM-style architecture. The diagram below uses 
 source venv_cocotb/bin/activate
 ```
 
-2. Install PyUVM and vsc (if not already installed):
+2. Install PyUVM and pyvsc (if not already installed):
 
 ```bash
-pip install pyuvm vsc
+pip install pyuvm pyvsc
 ```
 
 3. Choose a tutorial (e.g., `Mux`):
@@ -134,13 +134,13 @@ include $(shell cocotb-config --makefiles)/Makefile.sim
 ## 🧾 Debugging Tips
 
 - Use `PYUVM_LOGLEVEL` to control logging verbosity (e.g., `PYUVM_LOGLEVEL=DEBUG make`).
-- If coverage fails, check `MyCoverage.report_phase()` logs and the `vsc` covergroup implementation.
+- If coverage fails, check `MyCoverage.report_phase()` logs and the `pyvsc` covergroup implementation.
 - Ensure `ConfigDB` keys match across components (e.g., storing the BFM and coverage handle in the expected scopes).
 - If tests end prematurely, verify objection usage in `run_phase()` (raise/drop correctly).
 
 ## 📊 Verification Metrics
 
-- Functional coverage (vsc covergroups)
+- Functional coverage (pyvsc covergroups)
 - Behavioural correctness (Scoreboard vs GoldenModel)
 - Assertion of coverage in `report_phase()` (tests generally assert success/failure)
 
