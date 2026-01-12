@@ -118,7 +118,7 @@ Notes
 - If failures occur, reproduce with a small directed sequence and view waveforms.
 
 ## Typical console output (placeholder)
-```bash
+```console
 get_inst_coverage: False
      2.01ns INFO     ..VM/FullAdder/MyScoreboard.py(22) [uvm_test_top.env.scoreboard]: PASS: A_i=0, B_i=0, C_i=0 -> S_o=0, C_o=0
 get_inst_coverage: True

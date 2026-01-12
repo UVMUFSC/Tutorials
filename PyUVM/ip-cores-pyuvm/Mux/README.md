@@ -131,7 +131,7 @@ TEST FAILED: Scoreboard found 1 errors.
 ```
 
 ## Typical console output (placeholder)
-```bash
+```console
      2.26ns INFO     ..VM/PyUVM/Mux/MyScoreboard.py(22) [uvm_test_top.env.scoreboard]: PASS: X0=0, X1=0, X2=1, X3=1, SEL=10 -> Y=1
 get_inst_coverage: True
      2.26ns INFO     ..VM/PyUVM/Mux/MyScoreboard.py(22) [uvm_test_top.env.scoreboard]: PASS: X0=1, X1=0, X2=0, X3=1, SEL=11 -> Y=1

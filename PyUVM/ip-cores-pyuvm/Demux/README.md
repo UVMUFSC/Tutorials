@@ -139,7 +139,7 @@ TEST FAILED: Scoreboard found 1 errors.
 ```
 
 ## Typical console output (placeholder)
-```bash
+```console
      2.01ns INFO     ../PyUVM/Demux/MyScoreboard.py(22) [uvm_test_top.env.scoreboard]: PASS: X=0, SEL=10 -> Y0=0, Y1=0, Y2=0, Y3=0
 get_inst_coverage: True
      2.02ns INFO     ../PyUVM/Demux/MyScoreboard.py(22) [uvm_test_top.env.scoreboard]: PASS: X=0, SEL=10 -> Y0=0, Y1=0, Y2=0, Y3=0

@@ -124,7 +124,7 @@ TEST FAILED: Scoreboard found 1 errors.
 
 
 ## Typical console output (placeholder)
-```bash
+```console
 get_inst_coverage: True
      3.65ns INFO     ..M/Adder4Bits/MyScoreboard.py(22) [uvm_test_top.env.scoreboard]: PASS: A_i=0101, B_i=0011 -> S_o=1000, C_o=0
 get_inst_coverage: True

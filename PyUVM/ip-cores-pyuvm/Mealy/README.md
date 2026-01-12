@@ -147,7 +147,7 @@ TEST FAIL: Scoreboard found 1 errors.
 ```
 
 ## Typical Console output (placeholder)
-```bash
+```console
 get_inst_coverage: True
   3060.00ns INFO     ../PyUVM/Mealy/MyScoreboard.py(22) [uvm_test_top.env.scoreboard]: PASS: CURRENT_STATE=01, INPUT=0, RST=1 -> OUTPUT=0, NEXT_STATE=10
 get_inst_coverage: True

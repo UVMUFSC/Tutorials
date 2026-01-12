@@ -112,7 +112,7 @@ TEST FAILED: Scoreboard found 1 errors.
 ```
 
 ## Typical console output (placeholder)
-```bash
+```console
 get_inst_coverage: True
  12350.00ns INFO     ../PyUVM/Moore/MyScoreboard.py(22) [uvm_test_top.env.scoreboard]: PASS: PREVIOUS_STATE=010, NEXT=1, RST=0 -> OUT=0, CURRENT_STATE=011
 get_inst_coverage: True
