@@ -14,7 +14,7 @@ class MyScoreboard(uvm_scoreboard):
         self.golden_model=GoldenModel()
 
     async def run_phase(self):
-        self.logger.info("Scoreboard iniciando checagem...")
+        self.logger.info("Scoreboard starting checks...")
         while True:
             pkt = await self.fifo.get()
 
@@ -24,11 +24,11 @@ class MyScoreboard(uvm_scoreboard):
             else:
                 self.num_errors += 1
                 self.logger.error(
-                    f"FAIL: A={pkt.a}, B={pkt.b}. ESPERADO S={self.golden_model.s}, C={self.golden_model.c}. RECEBIDO S={pkt.s}, C={pkt.c}"
+                    f"FAIL: A={pkt.a}, B={pkt.b}. EXPECTED S={self.golden_model.s}, C={self.golden_model.c}. RECEIVED S={pkt.s}, C={pkt.c}"
                 )
 
     def check_phase(self):
         if self.num_errors > 0:
-            self.logger.fatal(f"TEST FAILED: Scoreboard encontrou {self.num_errors} erros.")
+            self.logger.fatal(f"TEST FAILED: Scoreboard found {self.num_errors} errors.")
         else:
-            self.logger.info("TEST PASS: Todas as transações foram corretas.")
+            self.logger.info("TEST PASS: All transactions were correct.")

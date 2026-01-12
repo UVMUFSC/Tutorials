@@ -1,8 +1,6 @@
 from pyuvm import *
 from vsc import covergroup, coverpoint, bit_t, bin, cross
 
-
-
 @covergroup
 class HalfAdderCovergroup():
 

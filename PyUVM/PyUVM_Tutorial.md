@@ -51,21 +51,14 @@ Your `Makefile` remains very similar to the standard cocotb one. The key differe
 Here's an example Makefile:
 
 # Example Makefile for PyUVM project
+```
 SIM ?= verilator
 TOPLEVEL_LANG ?= verilog
-
-# === EDIT THESE FOR YOUR PROJECT ===
 VERILOG_SOURCES += $(PWD)/rtl/half_adder.v
-TOPLEVEL ?= half_adder           # Top module name in your HDL
-MODULE ?= tests.test_uvm_half_adder # Python import path to your test
-# ===================================
-
-# Enable waveform tracing for GTKWave
-VERILATOR_TRACE ?= 1
-EXTRA_ARGS += --trace --trace-fst --trace-structs
-
-# Include the standard cocotb Makefile
+COCOTB_TOPLEVEL ?= half_adder          # Top module name in your HDL
+COCOTB_TEST_MODULES ?= MyTest          # Python import path to your test
 include $(shell cocotb-config --makefiles)/Makefile.sim
+```
 
 ## 4. Run a PyUVM Simulation
 

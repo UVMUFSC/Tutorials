@@ -1,6 +1,6 @@
 # UVM-Like Tutorial: Principles of Structured Verification
 
-> **📚 Related Tutorial:** To learn how to set up the development environment with cocotb, Verilator and GTKWave, see the [CocoTb Tutorial](CocoTb_Tutorial.md).
+> **📚 Related Tutorial:** To learn how to set up the development environment with cocotb, Verilator and GTKWave, see the [CocoTb Tutorial](CocoTb/CocoTb_Tutorial.md).
 
 ## What is UVM and Structured Verification?
 
