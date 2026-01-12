@@ -21,7 +21,6 @@ class MooreWrapper:
     async def driver_task(self):
         while True:
             packet = await self.driver_queue.get() 
-            #await FallingEdge(self.dut.clk_i)
             
             self.dut.next_i.value = packet.next_i
             self.dut.rst_i.value = packet.rst_i
@@ -32,7 +31,6 @@ class MooreWrapper:
         return await self.mon_queue.get()
     
     async def monitor_task(self):
-        ##await Timer(1, unit='step')
         while True:
             await self.stimulus_event.wait()
             self.stimulus_event.clear()

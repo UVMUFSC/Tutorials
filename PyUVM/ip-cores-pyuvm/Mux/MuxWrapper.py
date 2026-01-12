@@ -32,7 +32,6 @@ class MuxWrapper:
         return await self.mon_queue.get()
     
     async def monitor_task(self):
-        ##await Timer(1, unit='step')
         while True:
             await self.stimulus_event.wait()
             self.stimulus_event.clear()

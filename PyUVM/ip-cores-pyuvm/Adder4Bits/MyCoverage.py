@@ -9,7 +9,6 @@ class MyCoverage(uvm_subscriber):
     def write(self, pkt):
 
         self.cg.sample(pkt.a_i, pkt.b_i)
-        #self.logger.info(f"Covered")
 
     def report_phase(self):
 
