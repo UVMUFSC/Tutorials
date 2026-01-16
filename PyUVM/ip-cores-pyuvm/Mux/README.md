@@ -157,6 +157,6 @@ get_inst_coverage: True
 - Reproduce failing vectors with directed, small tests to step through signals and simplify debugging.
 - If the scoreboard never receives transactions, double-check the `monitor` writes and the `analysis_export` connection in `MyEnv.build_phase()`.
 - Use `make WAVES=1` and inspect `dump.fst` with GTKWave to debug failing vectors.
-- Check that `ref_model()` is called before the driver applies the transaction and that golden model expectations are registered.
+
 
 

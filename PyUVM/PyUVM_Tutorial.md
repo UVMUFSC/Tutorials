@@ -66,17 +66,17 @@ The simulation flow is identical to running a standard cocotb test, thanks to th
 
 1.  **Navigate to your project directory** (where the `Makefile` is located).
 2.  **Run the simulation** (this will compile the HDL and execute the Python testbench):
-    
+    ```bash
     make
-    
+    ```
     Or, to explicitly enable waveform generation:
-    
+    ```bash
     make WAVES=1
-    
+    ```
 3.  **View waveforms** (if tracing is enabled):
-    
+    ```bash
     gtkwave dump.fst
-    
+    ```
 
 ## 5. Understanding the PyUVM Test Flow
 

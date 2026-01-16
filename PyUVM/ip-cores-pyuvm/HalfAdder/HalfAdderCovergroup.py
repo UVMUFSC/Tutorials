@@ -1,8 +1,23 @@
+"""
+HalfAdderCovergroup: Functional coverage bins for Half Adder inputs.
+
+Defines coverage points for a_i and b_i, plus cross coverage to ensure all
+input combinations (2x2 = 4 cases) are tested.
+"""
+
 from pyuvm import *
 from vsc import covergroup, coverpoint, bit_t, bin, cross
 
 @covergroup
 class HalfAdderCovergroup():
+    """
+    Coverage model for Half Adder verification.
+    
+    Coverpoints:
+    - a_i: bins for 0 and 1
+    - b_i: bins for 0 and 1
+    - Cross coverage: all 4 combinations (0,0), (0,1), (1,0), (1,1)
+    """
 
     def __init__(self):
         self.with_sample(

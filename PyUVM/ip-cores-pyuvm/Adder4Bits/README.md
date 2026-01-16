@@ -157,5 +157,4 @@ TYPE Adder4BitsCovergroup : 100.00%
 ## Debugging tips
 - Use `PYUVM_LOGLEVEL=DEBUG` for verbose logging.
 - Reproduce failing vectors with directed tests and inspect `dump.fst` in GTKWave.
-- Check that `ref_model()` is called before the driver drives the transaction.
 - If coverage stalls: check covergroup bins and sequence randomization constraints.

@@ -1,3 +1,10 @@
+"""
+MyPackage: Aggregates all UVM components for Full Adder verification.
+
+Provides single import point consolidating all testbench classes and packet
+definitions, simplifying top-level imports.
+"""
+
 from Pkt import Pkt
 from MySequence import MySequence
 from MySequencer import MySequencer

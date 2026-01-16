@@ -141,6 +141,5 @@ get_inst_coverage: True
 
 ## Debugging tips
 - `PYUVM_LOGLEVEL=DEBUG` for detailed traces.
-- Confirm the wrapper/BFM interface and that `ref_model()` is called prior to driving.
 
 
