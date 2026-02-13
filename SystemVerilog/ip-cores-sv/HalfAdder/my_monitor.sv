@@ -39,7 +39,7 @@ class my_monitor extends uvm_monitor;
       mon_pkt.c = vif.data_bus_out[2];
       mon_pkt.s = vif.data_bus_out[3];
 
-      `uvm_info(get_type_name(), $sformatf("Monitorou A=%0d, B=%0d", mon_pkt.a, mon_pkt.b), UVM_LOW)
+      `uvm_info(get_type_name(), $sformatf("Monitored A=%0d, B=%0d", mon_pkt.a, mon_pkt.b), UVM_LOW)
 
       mon_analysis_port.write(mon_pkt);
     end

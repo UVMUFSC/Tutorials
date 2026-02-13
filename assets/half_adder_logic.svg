@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="240" viewBox="0 0 700 240">
+  <rect width="100%" height="100%" fill="white"/>
+
+  <text x="20" y="75" font-family="Arial" font-size="16">a</text>
+  <text x="20" y="115" font-family="Arial" font-size="16">b</text>
+
+  <line x1="40" y1="70" x2="200" y2="70" stroke="black" stroke-width="2"/>
+  <line x1="40" y1="110" x2="200" y2="110" stroke="black" stroke-width="2"/>
+
+  <line x1="200" y1="70" x2="200" y2="170" stroke="black" stroke-width="2"/>
+  <line x1="200" y1="110" x2="200" y2="190" stroke="black" stroke-width="2"/>
+
+  <line x1="200" y1="70" x2="260" y2="70" stroke="black" stroke-width="2"/>
+  <line x1="200" y1="110" x2="260" y2="110" stroke="black" stroke-width="2"/>
+  <line x1="200" y1="170" x2="260" y2="170" stroke="black" stroke-width="2"/>
+  <line x1="200" y1="190" x2="260" y2="190" stroke="black" stroke-width="2"/>
+
+  <circle cx="200" cy="70" r="3" fill="black"/>
+  <circle cx="200" cy="110" r="3" fill="black"/>
+
+  <path d="M 260 50 C 300 50 330 68 345 90 C 330 112 300 130 260 130 C 278 112 278 68 260 50 Z" fill="none" stroke="black" stroke-width="2"/>
+  <path d="M 252 50 C 270 68 270 112 252 130" fill="none" stroke="black" stroke-width="2"/>
+
+  <path d="M 260 150 L 310 150 C 350 150 380 170 380 190 C 380 210 350 230 310 230 L 260 230 Z" fill="none" stroke="black" stroke-width="2"/>
+
+  <line x1="345" y1="90" x2="560" y2="90" stroke="black" stroke-width="2"/>
+  <line x1="380" y1="190" x2="560" y2="190" stroke="black" stroke-width="2"/>
+
+  <text x="575" y="95" font-family="Arial" font-size="16">s</text>
+  <text x="575" y="195" font-family="Arial" font-size="16">c</text>
+</svg>

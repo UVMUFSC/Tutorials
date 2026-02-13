@@ -90,10 +90,10 @@ class pkt extends uvm_sequence_item
 virtual function void check_phase (uvm_phase phase);
     super.check_phase(phase);
     if (this.num_errors > 0) begin
-        `uvm_fatal ("FINAL_RESULT", {$sformatf("TEST FAILED: Scoreboard encontrou %0d erros.", num_errors)})
+        `uvm_fatal ("FINAL_RESULT", {$sformatf("TEST FAILED: Scoreboard found %0d errors.", num_errors)})
     end 
     else begin
-        `uvm_info ("FINAL_RESULT", "TEST PASS: Todas as transacoes foram corretas.", UVM_NONE)
+        `uvm_info ("FINAL_RESULT", "TEST PASS: All transactions were correct.", UVM_NONE)
     end
 endfunction
 ```
@@ -739,7 +739,7 @@ def ref_model(self, tr: HalfAdderTransaction):
 ```python
     def check_actual(self, actual_tr: HalfAdderTransaction):
         if not self.expected_queue:
-            print("[SCOREBOARD FAIL] Recebeu um resultado do DUT sem ter um esperado!")
+            print("[SCOREBOARD FAIL] Received a DUT result without an expected value!")
             self.errors += 1
             return
 
@@ -751,8 +751,8 @@ def ref_model(self, tr: HalfAdderTransaction):
             print(f"[SCOREBOARD PASS] a={actual_tr.a}, b={actual_tr.b} -> s={actual_s}, c={actual_c}") # ... report PASS/FAIL ...
         else:
             print(f"[SCOREBOARD FAIL] Para a={actual_tr.a}, b={actual_tr.b}:")
-            print(f"  -> Esperado: s={expected_s}, c={expected_c}")
-            print(f"  -> Recebido: s={actual_s}, c={actual_c}")
+            print(f"  -> Expected: s={expected_s}, c={expected_c}")
+            print(f"  -> Received: s={actual_s}, c={actual_c}")
             self.errors += 1
 ```
 </details>
@@ -803,12 +803,12 @@ class MyScoreboard(uvm_scoreboard):
             else:
                 self.num_errors += 1
                 self.logger.error(
-                    f"FAIL: A={pkt.a}, B={pkt.b}. ESPERADO S={self.golden_model.s}, C={self.golden_model.c}. RECEBIDO S={pkt.s}, C={pkt.c}"
+                    f"FAIL: A={pkt.a}, B={pkt.b}. EXPECTED S={self.golden_model.s}, C={self.golden_model.c}. RECEIVED S={pkt.s}, C={pkt.c}"
                 )
 
     def check_phase(self):
         if self.num_errors > 0:
-            self.logger.fatal(f"TEST FAILED: Scoreboard encontrou {self.num_errors} erros.")
+            self.logger.fatal(f"TEST FAILED: Scoreboard found {self.num_errors} errors.")
         else:
             self.logger.info("TEST PASS: Todas as transações foram corretas.")
 ```
@@ -841,8 +841,8 @@ virtual function void write (pkt data);
     else begin
     string msg = {"FAIL: A=", $sformatf("%0d", data.a),
                     ", B=", $sformatf("%0d", data.b),
-                    ". ESPERADO S=", $sformatf("%0d", expected_s),
-                    ", RECEBIDO S=", $sformatf("%0d", data.s)};
+                    ". EXPECTED S=", $sformatf("%0d", expected_s),
+                    ", RECEIVED S=", $sformatf("%0d", data.s)};
 
         `uvm_error ("SCOREBOARD", msg)
         this.num_errors++; 
@@ -1038,7 +1038,7 @@ async def half_adder_uvm_test(dut):
         await env.monitor.run()      # Monitor actual results
 
     # 3. Final Check
-    assert env.scoreboard.errors == 0, f"Scoreboard encontrou {env.scoreboard.errors} erros."
+    assert env.scoreboard.errors == 0, f"Scoreboard found {env.scoreboard.errors} errors."
 ```
 </details>
 

@@ -34,8 +34,8 @@ class my_scoreboard extends uvm_scoreboard;
         else begin
 	    string msg = {"FAIL: A=", $sformatf("%0d", data.a), 
                       ", B=", $sformatf("%0d", data.b), 
-                      ". ESPERADO S=", $sformatf("%0d", expected_s), 
-                      ", RECEBIDO S=", $sformatf("%0d", data.s)};
+                      ". EXPECTED S=", $sformatf("%0d", expected_s), 
+                      ", RECEIVED S=", $sformatf("%0d", data.s)};
 
             `uvm_error ("SCOREBOARD", msg)
             this.num_errors++; 
@@ -46,10 +46,10 @@ class my_scoreboard extends uvm_scoreboard;
     virtual function void check_phase (uvm_phase phase);
         super.check_phase(phase);
         if (this.num_errors > 0) begin
-            `uvm_fatal ("FINAL_RESULT", {$sformatf("TEST FAILED: Scoreboard encontrou %0d erros.", num_errors)})
+            `uvm_fatal ("FINAL_RESULT", {$sformatf("TEST FAILED: Scoreboard found %0d errors.", num_errors)})
         end 
         else begin
-            `uvm_info ("FINAL_RESULT", "TEST PASS: Todas as transacoes foram corretas.", UVM_NONE)
+            `uvm_info ("FINAL_RESULT", "TEST PASS: All transactions were correct.", UVM_NONE)
         end
     endfunction
 
