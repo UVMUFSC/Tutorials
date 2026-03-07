@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="260" viewBox="0 0 980 260" fill="none">
+  <rect x="20" y="40" width="940" height="170" rx="12" stroke="#2D3748" stroke-width="2" fill="#F7FAFC"/>
+  <text x="30" y="28" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#1A202C">pkt bit mapping (Adder4Bits)</text>
+
+  <rect x="40" y="80" width="280" height="90" rx="8" fill="#BEE3F8" stroke="#2B6CB0" stroke-width="2"/>
+  <text x="55" y="115" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#1A365D">inputs[7:4] = a_i</text>
+  <text x="55" y="145" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#1A365D">4-bit input operand A</text>
+
+  <rect x="335" y="80" width="280" height="90" rx="8" fill="#C6F6D5" stroke="#2F855A" stroke-width="2"/>
+  <text x="350" y="115" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#22543D">inputs[3:0] = b_i</text>
+  <text x="350" y="145" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#22543D">4-bit input operand B</text>
+
+  <rect x="630" y="80" width="210" height="90" rx="8" fill="#FEEBC8" stroke="#C05621" stroke-width="2"/>
+  <text x="645" y="115" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#7B341E">s_o[3:0]</text>
+  <text x="645" y="145" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#7B341E">observed sum</text>
+
+  <rect x="855" y="80" width="85" height="90" rx="8" fill="#FED7E2" stroke="#B83280" stroke-width="2"/>
+  <text x="873" y="115" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#702459">c_o</text>
+  <text x="862" y="145" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#702459">carry</text>
+
+  <text x="42" y="195" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#4A5568">Wrapper mapping: data_bus_out[12:9]=a_i, [8:5]=b_i, [4:1]=s_o, [0]=c_o</text>
+</svg>
