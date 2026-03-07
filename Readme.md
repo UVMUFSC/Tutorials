@@ -1103,7 +1103,9 @@ endmodule
 
 ---
 
-## 🔗 TLM
+## 🧪 UVM Techniques
+
+### TLM
 
 Transaction-Level Modeling (TLM) is a communication style where components exchange transactions (objects) instead of low-level signals. In UVM, this appears as TLM ports/exports (like `uvm_analysis_port`, `uvm_analysis_imp`, and `seq_item_port`) that pass `pkt` items between sequencer, driver, monitor, scoreboard, and coverage. It is good practice because it decouples components, improves reuse, and makes it easier to swap or extend parts of the testbench without changing the data flow.
 
@@ -1172,6 +1174,86 @@ class Environment:
         self.monitor = Monitor(dut)
         self.scoreboard = Scoreboard()
         self.monitor.scoreboard_callback = self.scoreboard.check_actual
+```
+</details>
+
+### CDV (Coverage-Driven Verification)
+
+Coverage-Driven Verification (CDV) means the test is guided by coverage status instead of a fixed number of vectors. In practice, the sequence continues to generate constrained-random transactions until the coverage model reports the target (for example, 100%). This improves confidence that all intended scenarios were exercised.
+
+![CDV overview](assets/CDV.png)
+
+<details>
+<summary><strong>PyUVM Example (coverage-driven sequence loop)</strong></summary>
+
+```python
+class MySequence(uvm_sequence):
+
+    def __init__(self, name):
+        super().__init__(name)
+        self.cov_handle=ConfigDB().get(uvm_root(), "", "COV_HANDLE")
+
+    async def body(self):
+        while self.cov_handle.cg.get_coverage() < 100.00:
+            sequence_packet=Pkt.create("packet")
+            sequence_packet.randomize()
+            await Timer(1, unit='step')
+            await self.start_item(sequence_packet)
+            await self.finish_item(sequence_packet)
+```
+</details>
+
+<details>
+<summary><strong>SystemVerilog Example (coverage-driven sequence loop)</strong></summary>
+
+```sv
+class my_sequence extends uvm_sequence #(pkt);
+    `uvm_object_utils(my_sequence)
+
+    real current_coverage = 0;
+    uvm_event cov_sampled_event;
+
+    function new (string name = "my_sequence");
+        super.new(name);
+        cov_sampled_event = uvm_event_pool::get_global("cov_sampled");
+    endfunction
+
+    virtual task body();
+        pkt packet;
+        while (current_coverage < 100.0) begin
+            `uvm_do(packet)
+            cov_sampled_event.wait_trigger();
+            void'(uvm_config_db#(real)::get(null, "*", "cov_status", current_coverage));
+            `uvm_info("SEQ", $sformatf("Status: %0.2f%%", current_coverage), UVM_LOW)
+        end
+    endtask
+endclass
+```
+</details>
+
+### CRV (Constrained-Random Verification)
+
+Constrained-Random Verification (CRV) uses random stimulus under constraints to explore the input space broadly without writing every test manually. In the Adder4Bits case, `randc` is used so combinations are not repeated until all possibilities are consumed, which is very useful to avoid redundant stimulus.
+
+<details>
+<summary><strong>SystemVerilog Example (Adder4Bits using `randc`)</strong></summary>
+
+```sv
+class pkt extends uvm_sequence_item;
+  randc bit [7:0] inputs;
+endclass
+
+class my_sequence extends uvm_sequence #(pkt);
+    virtual task body();
+        pkt packet;
+        `uvm_create(packet)
+        while (current_coverage < 100.0) begin
+            `uvm_rand_send(packet)
+            cov_sampled_event.wait_trigger();
+            void'(uvm_config_db#(real)::get(null, "*", "cov_status", current_coverage));
+        end
+    endtask
+endclass
 ```
 </details>
 
