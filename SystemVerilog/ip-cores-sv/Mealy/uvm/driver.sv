@@ -1,0 +1,58 @@
+//------------------------------------------------------------------------------
+// UVM driver: drives Mealy FSM stimulus through the virtual interface.
+// Pulls transactions from the sequencer and controls the sampling handshake.
+//------------------------------------------------------------------------------
+class driver extends uvm_driver #(pkt);
+    `uvm_component_utils (driver)
+
+    // Virtual interface handle and current request.
+    virtual dut_if vif;
+    pkt req_pkt;
+
+    function new (string name = "driver", uvm_component parent);
+        super.new(name, parent);
+    endfunction
+
+    // Retrieve the virtual interface from the configuration database.
+    virtual function void build_phase (uvm_phase phase);
+        super.build_phase(phase);
+        if (! uvm_config_db #(virtual dut_if) :: get (this, "", "vif", vif)) begin
+            `uvm_fatal (get_type_name (), "Didn't get handle to virtual interface if_name")
+        end
+    endfunction
+
+    // Main driver loop: fetch, drive, complete.
+    virtual task run_phase(uvm_phase phase);
+        super.run_phase(phase);
+        vif.en <= 1'b0;
+
+        forever begin
+            @(vif.drv_cb);
+            seq_item_port.try_next_item(req_pkt);
+            if (req_pkt != null) begin
+                drive_item(req_pkt);
+                seq_item_port.item_done();
+            end else begin
+                idle();
+            end
+        end
+
+    endtask
+
+    // Drive a single transaction on the interface.
+    virtual task drive_item (pkt pkt_item);
+
+        vif.data_bus_in <= pkt_item.inputs;
+        vif.en <= 1'b1;
+
+        // Wait for the monitor/control thread to clear enable.
+        wait(vif.en == 0);
+    endtask
+
+    // Keep interface idle for one cycle when no item is available.
+    virtual task idle();
+        vif.en <= 1'b0; 
+        @(vif.drv_cb);
+    endtask
+
+endclass
