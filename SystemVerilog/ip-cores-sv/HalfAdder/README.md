@@ -1,6 +1,314 @@
 # Tutorial: Verifying a Half-Adder using SystemVerilog UVM
 
-This tutorial verifies `half_adder.sv` using a SystemVerilog UVM testbench. The input space is only 2 bits, so the environment focuses on clear UVM structure plus coverage-driven stimulus to reach 100% for the input cross.
+This tutorial verifies `rtl/half_adder.sv` using a SystemVerilog UVM testbench. The input space is only 2 bits, so the environment focuses on clear UVM structure plus coverage-driven stimulus to reach 100% for the input cross.
+
+## File Structure
+```bash
+ip-cores-sv/HalfAdder/
+├── rtl/
+│   └── half_adder.sv
+├── tb/
+│   ├── dut_if.sv
+│   ├── half_adder_wrapper.sv
+│   └── tb_top.sv
+├── uvm/
+│   ├── half_adder_pkg.sv
+│   ├── pkt.sv
+│   ├── halfadder_sequence.sv
+│   ├── sequencer.sv
+│   ├── driver.sv
+│   ├── monitor.sv
+│   ├── agent.sv
+│   ├── coverage.sv
+│   ├── scoreboard.sv
+│   ├── env.sv
+│   └── test.sv
+└── sim/
+    ├── run.f
+    └── Makefile
+```
+
+## The DUT
+The Half-Adder computes `s = a ^ b` and `c = a & b`.
+
+![Half Adder logic diagram](../../../assets/half_adder_logic.svg)
+
+To see more details about the RTL design of this module, check the [HalfAdder RTL Design](https://github.com/UVMUFSC/IP-Cores/tree/main/ip-cores/half-adder).
+
+## Verification Logic
+- `tb_top`: instantiates the interface and wrapper, drives clock/reset, places `vif` into `uvm_config_db`, and calls `run_test`.
+- `half_adder_pkg`: central include point for all UVM classes and macros.
+- `env`: creates `agent`, `scoreboard`, and `coverage` and connects analysis ports.
+- `agent`: encapsulates `sequencer`, `driver`, and `monitor`.
+- `driver`: drives stimulus on the interface and asserts `valid_in`.
+- `monitor`: samples outputs when `valid_out` is asserted and publishes `pkt` transactions.
+- `scoreboard`: compares observed outputs with expected `a ^ b` and `a & b` values.
+
+## Packet / Sequence Item (`pkt`)
+The `pkt` class is the sequence item used across the environment. It is also the core part that changes the most from one verification to another.
+- `a` and `b` are randomized inputs.
+- `s` and `c` are observed outputs captured by the monitor.
+- The item is 4 bits wide in total when mapped on the interface bus: one bit each for `a`, `b`, `c`, and `s`.
+
+![Packet bit mapping diagram](../../../assets/half_adder_pkt.svg)
+
+### Packet (actual implementation)
+```sv
+class pkt extends uvm_sequence_item
+
+	rand bit a;  
+	rand bit b; 
+	bit s;
+	bit c;
+
+	`uvm_object_utils_begin(pkt)
+		`uvm_field_int (a, UVM_DEFAULT)
+		`uvm_field_int (b, UVM_DEFAULT)
+		`uvm_field_int (s, UVM_DEFAULT)
+		`uvm_field_int (c, UVM_DEFAULT)
+	`uvm_object_utils_end
+
+	function new(string name = "pkt");
+			super.new(name);
+			this.c = '0;
+			this.s = '0;
+	endfunction
+
+endclass
+```
+
+## Interface and Buses (`dut_if`)
+The interface provides a simple handshake and two 4-bit buses:
+- `data_bus_in[3:0]`: the driver places `a` and `b` on `[0]` and `[1]` (upper bits are unused).
+- `data_bus_out[3:0]`: the wrapper places `a`, `b`, `c`, and `s` on `[0]`, `[1]`, `[2]`, and `[3]` respectively.
+- `valid_in`: asserted by the driver to indicate valid inputs.
+- `valid_out`: asserted by the wrapper when outputs are ready.
+
+## Wrapper Behavior (`half_adder_wrapper`)
+The wrapper connects the DUT to the interface and implements a small handshake pipeline:
+- On reset it clears both buses and deasserts `valid_in`/`valid_out`.
+- When `valid_in` is high, it loads DUT outputs into `data_bus_out` and raises `valid_out` for the monitor to sample.
+- When `valid_in` is low, `valid_out` is deasserted to avoid re-sampling stale data.
+
+## Coverage and Event Synchronization (`coverage` + `halfadder_sequence`)
+Coverage is used to stop stimulus once all input combinations are observed:
+- `coverage` defines a covergroup with `a`, `b`, and a cross `a x b`.
+- After sampling, it writes the current coverage percentage into `uvm_config_db` and triggers a global `uvm_event` named `cov_sampled`.
+- `halfadder_sequence` waits for this event after each transaction and reads `cov_status` to decide whether to keep generating new packets.
+
+### Sequence (actual implementation)
+```sv
+class halfadder_sequence extends uvm_sequence #(pkt);
+    `uvm_object_utils(halfadder_sequence)
+
+    real current_coverage = 0;
+    uvm_event cov_sampled_event;
+
+    function new (string name = "sequence");
+        super.new(name);
+        cov_sampled_event = uvm_event_pool::get_global("cov_sampled");  
+    endfunction
+
+    virtual task body();
+        pkt packet;
+        while (current_coverage < 100.0) begin
+            `uvm_do(packet);
+
+             cov_sampled_event.wait_trigger();
+
+            void'(uvm_config_db#(real)::get(null, "*", "cov_status", current_coverage));
+      
+            `uvm_info("SEQ", $sformatf("Status: %0.2f%%", current_coverage), UVM_LOW)
+        end
+    endtask
+
+endclass
+```
+
+## Scoreboard (actual implementation)
+```sv
+class scoreboard extends uvm_scoreboard;
+	`uvm_component_utils (scoreboard)
+
+	uvm_analysis_imp #(pkt, scoreboard) ap_imp;
+	int num_errors = 0;
+
+	function new (string name = "scoreboard", uvm_component parent = null);
+		super.new (name, parent);
+	endfunction
+
+	virtual function void build_phase (uvm_phase phase);
+		super.build_phase (phase);
+		ap_imp = new ("ap_imp", this);
+	endfunction
+
+	virtual function void write (pkt data);
+    
+		bit expected_s; 
+		bit expected_c; 
+        
+		expected_s = data.a ^ data.b; 
+		expected_c = data.a & data.b; 
+
+		if (data.s == expected_s && data.c == expected_c) begin
+			`uvm_info ("SCOREBOARD", {$sformatf("PASS: A=%0d, B=%0d -> S=%0d, C=%0d", data.a, data.b, data.s, data.c)}, UVM_LOW)
+		end 
+		else begin
+			string msg = {"FAIL: A=", $sformatf("%0d", data.a), 
+						  ", B=", $sformatf("%0d", data.b), 
+						  ". EXPECTED S=", $sformatf("%0d", expected_s), 
+						  ", RECEIVED S=", $sformatf("%0d", data.s)};
+
+			`uvm_error ("SCOREBOARD", msg)
+			this.num_errors++; 
+		end
+	endfunction
+
+	virtual function void check_phase (uvm_phase phase);
+		super.check_phase(phase);
+		if (this.num_errors > 0) begin
+			`uvm_fatal ("FINAL_RESULT", {$sformatf("TEST FAILED: Scoreboard found %0d errors.", num_errors)})
+		end 
+		else begin
+			`uvm_info ("FINAL_RESULT", "TEST PASS: All transactions were correct.", UVM_NONE)
+		end
+	endfunction
+
+	virtual task run_phase (uvm_phase phase);
+		super.run_phase(phase);
+	endtask
+endclass
+```
+
+## Coverage (actual implementation)
+The covergroup samples the full input space and uses a global event to synchronize with the sequence. The event is triggered after every coverage sample so the sequence can decide whether to generate another item. The event synchronization can be seen in the `halfadder_sequence` file.
+The covergroup declares two bins for the `DUT` signals and cross them, making sure every possible combination is covered.
+
+```sv
+class coverage extends uvm_subscriber #(pkt);
+  `uvm_component_utils(coverage)
+
+  pkt tr;
+  uvm_event cov_sampled_event;
+
+  covergroup cg_adder;
+	option.per_instance = 1;
+	cp_a: coverpoint tr.a;
+	cp_b: coverpoint tr.b;
+	cross_ab: cross cp_a, cp_b;
+  endgroup
+
+  function new(string name, uvm_component parent);
+	super.new(name, parent);
+	cg_adder = new();
+	cg_adder.set_inst_name("half_adder_cov");
+	cov_sampled_event = uvm_event_pool::get_global("cov_sampled");
+  endfunction
+
+  virtual function void write(pkt t);
+	this.tr = t;
+	cg_adder.sample();
+	uvm_config_db#(real)::set(null, "*", "cov_status", cg_adder.get_inst_coverage());
+	cov_sampled_event.trigger();
+  endfunction
+endclass
+```
+
+## Running the Verification
+```bash
+cd ip-cores-sv/HalfAdder/sim
+make run
+```
+
+To save the console output to a log file:
+```bash
+make run_log
+```
+
+The `VERBOSITY` variable defaults to `UVM_LOW`. You can override it on the command line:
+```bash
+make run VERBOSITY=UVM_HIGH
+```
+
+## Console Output
+
+```console
+UVM_INFO @ 0: reporter [RNTST] Running test test...
+UVM_INFO @ 0: reporter [UVMTOP] UVM testbench topology:
+--------------------------------------------------------------
+Name                       Type                    Size  Value
+--------------------------------------------------------------
+uvm_test_top               test                    -     @2639
+  env                      env                     -     @2698
+    agent                  agent                   -     @2729
+      driver               driver                  -     @3517
+        rsp_port           uvm_analysis_port       -     @3616
+        seq_item_port      uvm_seq_item_pull_port  -     @3567
+      monitor              monitor                 -     @3596
+        mon_analysis_port  uvm_analysis_port       -     @3699
+      sequencer            sequencer               -     @2880
+        rsp_export         uvm_analysis_export     -     @2938
+        seq_item_export    uvm_seq_item_pull_imp   -     @3486
+        arbitration_queue  array                   0     -    
+        lock_queue         array                   0     -    
+        num_last_reqs      integral                32    'd1  
+        num_last_rsps      integral                32    'd1  
+    coverage               coverage                -     @2789
+      analysis_imp         uvm_analysis_imp        -     @2838
+    scoreboard             scoreboard              -     @2759
+      ap_imp               uvm_analysis_imp        -     @3772
+--------------------------------------------------------------
+
+UVM_INFO /home/100000001332321/Documents/UVM_UFSC/HalfAdder/uvm/monitor.sv(42) @ 30: uvm_test_top.env.agent.monitor [monitor] Monitored A=0, B=0
+UVM_INFO /home/100000001332321/Documents/UVM_UFSC/HalfAdder/uvm/scoreboard.sv(32) @ 30: uvm_test_top.env.scoreboard [SCOREBOARD] PASS: A=0, B=0 -> S=0, C=0
+UVM_INFO /home/100000001332321/Documents/UVM_UFSC/HalfAdder/uvm/halfadder_sequence.sv(27) @ 30: uvm_test_top.env.agent.sequencer@@sequence [SEQ] Status: 41.67%
+.
+.
+.
+UVM_INFO /home/100000001332321/Documents/UVM_UFSC/HalfAdder/uvm/halfadder_sequence.sv(27) @ 430: uvm_test_top.env.agent.sequencer@@sequence [SEQ] Status: 100.00%
+UVM_INFO /usr/eda/cadence/xcelium2209/tools/methodology/UVM/CDNS-1.1d/sv/src/base/uvm_objection.svh(1268) @ 430: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+UVM_INFO /home/100000001332321/Documents/UVM_UFSC/HalfAdder/uvm/scoreboard.sv(52) @ 430: uvm_test_top.env.scoreboard [FINAL_RESULT] TEST PASS: All transactions were correct.
+
+--- UVM Report catcher Summary ---
+
+
+Number of demoted UVM_FATAL reports  :    0
+Number of demoted UVM_ERROR reports  :    0
+Number of demoted UVM_WARNING reports:    0
+Number of caught UVM_FATAL reports   :    0
+Number of caught UVM_ERROR reports   :    0
+Number of caught UVM_WARNING reports :    0
+
+--- UVM Report Summary ---
+
+** Report counts by severity
+UVM_INFO :   37
+UVM_WARNING :    0
+UVM_ERROR :    0
+UVM_FATAL :    0
+** Report counts by id
+[FINAL_RESULT]     1
+[RNTST]     1
+[SCOREBOARD]    11
+[SEQ]    11
+[TEST_DONE]     1
+[UVMTOP]     1
+[monitor]    11
+Simulation complete via $finish(1) at time 430 NS + 51
+```
+
+## What is New
+Compared to older flat-file layouts, this tutorial introduces a folder structure that separates RTL, testbench, UVM, and simulation concerns:
+- **`rtl/`** contains the design under test.
+- **`tb/`** holds the interface, wrapper, and testbench top.
+- **`uvm/`** contains all UVM classes and the package file.
+- **`sim/`** holds the Makefile and file list (`run.f`) so simulation commands are run from a dedicated directory.
+
+Class names no longer use the `my_` prefix — each class is named directly (`agent`, `env`, `test`, etc.) matching its UVM role. The sequence is the exception and carries an IP-specific prefix (`halfadder_sequence`) to stay unambiguous when reused across multiple testbenches.
+
+## Debugging Tips
+- Increase verbosity with `make run VERBOSITY=UVM_HIGH` to see more driver/monitor activity, or run with the `gui` flag to set verbosity through the program interface.
+- Step through phases using SimVision and add breakpoints.
 
 ## File Structure
 ```bash
