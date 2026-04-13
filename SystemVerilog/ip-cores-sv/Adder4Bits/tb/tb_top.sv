@@ -25,9 +25,6 @@ module tb_top;
 
         rst = 1;
 
-        vif.valid_in = 0;
-        vif.data_bus_in = '0;
-
         #100 rst = 0;
     end
 
@@ -35,6 +32,6 @@ module tb_top;
     initial begin
         uvm_config_db #(virtual dut_if)::set(null, "*", "vif", vif);
 
-        run_test("my_test");
+        run_test("test");
     end    
 endmodule

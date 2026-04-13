@@ -2,8 +2,8 @@
 // Coverage collector: samples Adder input space and reports coverage status.
 // Uses a global event to notify the sequence that sampling is complete.
 //------------------------------------------------------------------------------
-class my_coverage extends uvm_subscriber #(pkt);
-  `uvm_component_utils(my_coverage)
+class coverage extends uvm_subscriber #(pkt);
+  `uvm_component_utils(coverage)
 
   // Last observed transaction and sync event.
   pkt tr;
@@ -18,7 +18,7 @@ class my_coverage extends uvm_subscriber #(pkt);
   endgroup
 
   // Constructor: build covergroup and get global event handle.
-  function new(string name, uvm_component parent);
+  function new(string name = "coverage", uvm_component parent);
     super.new(name, parent);
     cg_adder = new();
     cg_adder.set_inst_name("adder_cov");

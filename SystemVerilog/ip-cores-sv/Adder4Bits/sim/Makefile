@@ -1,7 +1,7 @@
 # Simple Makefile for UVM + Xcelium
 XRUN = xrun -64bit -uvm -sv
 RUN_F = run.f
-TEST = my_test
+TEST = test
 VERBOSITY = UVM_LOW
 
 # Main target: compile and run

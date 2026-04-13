@@ -2,15 +2,15 @@
 // UVM agent: bundles sequencer, driver, and monitor for Adder4Bits.
 // Active agents build driver/sequencer; monitor is always built.
 //------------------------------------------------------------------------------
-class my_agent extends uvm_agent;
-    `uvm_component_utils (my_agent)
+class agent extends uvm_agent;
+    `uvm_component_utils (agent)
 
     // Agent sub-components.
-    my_driver drv;
-    my_monitor mon;
-    my_sequencer seqr;
+    driver m_driver;
+    monitor m_monitor;
+    sequencer m_sequencer;
 
-    function new (string name = "my_agent", uvm_component parent = null);
+    function new (string name = "agent", uvm_component parent = null);
         super.new (name, parent);
     endfunction
 
@@ -19,11 +19,11 @@ class my_agent extends uvm_agent;
         super.build_phase (phase); 
 
         if(get_is_active()) begin
-            seqr = my_sequencer::type_id::create ("seqr", this);
-            drv  = my_driver::type_id::create ("drv", this);
+            m_sequencer = sequencer::type_id::create ("sequencer", this);
+            m_driver  = driver::type_id::create ("driver", this);
         end
 
-        mon  = my_monitor::type_id::create ("mon", this);
+        m_monitor  = monitor::type_id::create ("monitor", this);
 
     endfunction
 
@@ -31,7 +31,7 @@ class my_agent extends uvm_agent;
     virtual function void connect_phase (uvm_phase phase);
         super.connect_phase(phase);
         if (get_is_active()) begin
-            drv.seq_item_port.connect (seqr.seq_item_export);
+            m_driver.seq_item_port.connect (m_sequencer.seq_item_export);
         end
     endfunction
 

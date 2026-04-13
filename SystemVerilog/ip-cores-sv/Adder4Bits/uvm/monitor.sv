@@ -2,8 +2,8 @@
 // UVM monitor: observes DUT outputs and publishes transactions.
 // Captures (a,b,s,c) when valid_out is asserted.
 //------------------------------------------------------------------------------
-class my_monitor extends uvm_monitor;
-  `uvm_component_utils (my_monitor)
+class monitor extends uvm_monitor;
+  `uvm_component_utils (monitor)
 
   // Virtual interface to sample signals.
   virtual dut_if vif;
@@ -11,7 +11,7 @@ class my_monitor extends uvm_monitor;
   // Analysis port for broadcasting observed packets.
   uvm_analysis_port  #(pkt) mon_analysis_port;
 
-  function new (string name = "my_monitor", uvm_component parent = null);
+  function new (string name = "monitor", uvm_component parent = null);
 		super.new (name, parent);
 	endfunction
 

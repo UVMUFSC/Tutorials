@@ -1,21 +1,21 @@
 //------------------------------------------------------------------------------
 // Top-level UVM test: builds the environment and runs the main sequence.
 //------------------------------------------------------------------------------
-class my_test extends uvm_test;
-    `uvm_component_utils (my_test)
+class test extends uvm_test;
+    `uvm_component_utils (test)
 
     // Testbench environment and sequence handle.
-    my_env env;
-    my_sequence seqnc;
+    env m_env;
+    adder4bits_sequence m_sequence;
 
-    function new (string name = "my_test", uvm_component parent = null);
+    function new (string name = "test", uvm_component parent = null);
         super.new (name, parent);
     endfunction
 
     // Create environment.
     virtual function void build_phase (uvm_phase phase);
         super.build_phase (phase);
-        env = my_env::type_id::create ("env", this);
+        m_env = env::type_id::create ("env", this);
     endfunction
 
     // Print UVM topology after build.
@@ -27,11 +27,11 @@ class my_test extends uvm_test;
     virtual task run_phase(uvm_phase phase);
         super.run_phase(phase);
         
-        seqnc = my_sequence::type_id::create("seqnc");
+        m_sequence = adder4bits_sequence::type_id::create("sequence");
 
         phase.raise_objection(this);
 
-        seqnc.start(env.agent.seqr);
+        m_sequence.start(m_env.m_agent.m_sequencer);
 
         phase.drop_objection(this);
     endtask

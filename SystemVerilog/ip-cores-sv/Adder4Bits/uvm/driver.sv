@@ -2,14 +2,14 @@
 // UVM driver: drives Adder4Bits inputs through the virtual interface.
 // Pulls transactions from the sequencer and asserts valid_in.
 //------------------------------------------------------------------------------
-class my_driver extends uvm_driver #(pkt);
-    `uvm_component_utils (my_driver)
+class driver extends uvm_driver #(pkt);
+    `uvm_component_utils (driver)
 
     // Virtual interface handle and current request.
     virtual dut_if vif;
     pkt req_pkt;
 
-    function new (string name = "my_driver", uvm_component parent);
+    function new (string name = "driver", uvm_component parent);
         super.new(name, parent);
     endfunction
 

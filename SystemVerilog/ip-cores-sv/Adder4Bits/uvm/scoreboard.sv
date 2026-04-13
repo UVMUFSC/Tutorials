@@ -2,14 +2,14 @@
 // Scoreboard: checks DUT outputs against expected Adder4Bits environment results.
 // Counts errors and reports final pass/fail in check_phase.
 //------------------------------------------------------------------------------
-class my_scoreboard extends uvm_scoreboard;
-    `uvm_component_utils (my_scoreboard)
+class scoreboard extends uvm_scoreboard;
+    `uvm_component_utils (scoreboard)
 
     // Analysis implementation and error counter.
-    uvm_analysis_imp #(pkt, my_scoreboard) ap_imp;
+    uvm_analysis_imp #(pkt, scoreboard) ap_imp;
     int num_errors = 0;
 
-    function new (string name = "my_scoreboard", uvm_component parent = null);
+    function new (string name = "scoreboard", uvm_component parent = null);
         super.new (name, parent);
     endfunction
 

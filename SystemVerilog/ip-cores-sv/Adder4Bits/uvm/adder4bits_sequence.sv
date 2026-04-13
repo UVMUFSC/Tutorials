@@ -2,15 +2,15 @@
 // UVM sequence: generates randomized packets until coverage reaches 100%.
 // Uses a global event to wait for coverage sampling completion.
 //------------------------------------------------------------------------------
-class my_sequence extends uvm_sequence #(pkt);
-    `uvm_object_utils(my_sequence)
+class adder4bits_sequence extends uvm_sequence #(pkt);
+    `uvm_object_utils(adder4bits_sequence)
 
     // Coverage state, synchronization event and number of randomized packets. 
     real current_coverage = 0;
     uvm_event cov_sampled_event;
     int num_packets = 0;
 
-    function new (string name = "my_sequence");
+    function new (string name = "sequence");
         super.new(name);
         cov_sampled_event = uvm_event_pool::get_global("cov_sampled");  
     endfunction

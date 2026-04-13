@@ -1,7 +1,8 @@
+# UVM search files directory
 -incdir "path to your uvm files folder"/uvm/
 
 # UVM Package
-"path to your package"/uvm/mealy_pkg.sv
+"path to your uvm package"/uvm/mealy_pkg.sv
 
 # Interface
 "path to your DUT interface"/tb/dut_if.sv
